@@ -11,6 +11,17 @@ AExample::AExample()
 
 }
 
+bool AExample::GetActorIsActive()
+{
+	return bIsActive;
+}
+
+void AExample::SetActorIsActive_Implementation(bool bIsActorActive)
+{
+	this->bIsActive = bIsActorActive;
+	UE_LOG(LogTemp, Warning, TEXT("C++ Version of SetActorIsActive"));
+}
+
 bool AExample::ExampleFunction2_Implementation(int32 Number)
 {
 	return false;

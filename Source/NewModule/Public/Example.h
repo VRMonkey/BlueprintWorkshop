@@ -13,22 +13,29 @@ UCLASS()
 class NEWMODULE_API AExample : public AActor
 {
 	GENERATED_BODY()
+
+private: 
+
+	bool bIsActive = true;
 	
 public:	
 	// Sets default values for this actor's properties
 	AExample();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)  
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int ExampleInt;
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable, Category=Example)
 	FExampleDelegate ExampleEventDispatcher;
 
-	UFUNCTION(BlueprintImplementableEvent)
-	bool ExampleFunction(AActor* Actor, const FString& String, FString& ResultString);
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool GetActorIsActive();
+
+	UFUNCTION(BlueprintNativeEvent)
+	void SetActorIsActive(bool bIsActorActive);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void ExampleEvent(AActor* Actor, const FString& String);
+	bool ExampleFunction(AActor* Actor, const FString& String, FString& ResultString);
 
 	UFUNCTION(BlueprintNativeEvent)
 	bool ExampleFunction2(int32 Number);
